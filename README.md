@@ -1,1 +1,1 @@
-# MannaSaloon
+# MannaSalon
