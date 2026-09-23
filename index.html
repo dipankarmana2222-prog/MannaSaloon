@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Manna Saloon — Sabang</title>
+<meta name="description" content="Manna Saloon, Sabang — hairstyles, beard styles, timings and location.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-a:#eef4fb;
+    --bg-b:#dde9f6;
+    --bg-c:#cfe0f2;
+    --accent:#2f6fed;
+    --accent-soft:#6f9bfb;
+    --glass:rgba(255,255,255,0.5);
+    --glass-strong:rgba(255,255,255,0.75);
+    --glass-border:rgba(255,255,255,0.85);
+    --text:#152238;
+    --text-dim:#5c6b82;
+    --shadow:rgba(30,58,95,0.16);
+    --radius-lg:28px;
+    --radius-md:20px;
+    --radius-sm:14px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Inter','Hind Siliguri',sans-serif;
+    color:var(--text);
+    background:
+      radial-gradient(60% 40% at 18% 0%, rgba(140,180,255,0.35), transparent 60%),
+      radial-gradient(50% 35% at 100% 8%, rgba(180,210,255,0.4), transparent 60%),
+      radial-gradient(70% 50% at 50% 100%, rgba(205,225,250,0.55), transparent 60%),
+      linear-gradient(180deg, var(--bg-a), var(--bg-b) 50%, var(--bg-c));
+    background-attachment:fixed;
+    min-height:100vh;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .wordmark{
+    font-family:'Bebas Neue',sans-serif;
+    letter-spacing:0.04em;
+  }
+  html[lang="bn"] .wordmark{
+    font-family:'Hind Siliguri',sans-serif;
+    letter-spacing:0;
+    font-weight:700;
+  }
+
+  a{color:inherit;}
+
+  /* ---------- Top nav ---------- */
+  .navbar{
+    position:sticky; top:0; z-index:40;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 18px;
+    background:rgba(255,255,255,0.5);
+    backdrop-filter:blur(18px) saturate(160%);
+    -webkit-backdrop-filter:blur(18px) saturate(160%);
+    border-bottom:1px solid rgba(255,255,255,0.7);
+  }
+  .navbar .brand{font-size:22px; line-height:1;}
+  .navbar .brand span{color:var(--accent);}
+  .lang-btn{
+    min-width:46px; height:38px; padding:0 14px; border-radius:19px;
+    background:var(--glass); border:1px solid var(--glass-border);
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer; font-size:13px; font-weight:700; color:var(--accent);
+    -webkit-tap-highlight-color:transparent;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding:38px 20px 10px;
+    display:flex; flex-direction:column; align-items:center;
+    text-align:center;
+  }
+  .owner-frame{
+    width:132px; height:132px; border-radius:50%;
+    padding:5px;
+    background:linear-gradient(140deg, var(--accent-soft), rgba(255,255,255,0.6));
+    box-shadow:0 18px 40px var(--shadow);
+    margin-bottom:18px;
+  }
+  .owner-frame img{
+    width:100%; height:100%; object-fit:cover; border-radius:50%;
+    display:block; border:3px solid rgba(255,255,255,0.9);
+    background:#dbe6f5;
+  }
+  .hero h1{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:50px; letter-spacing:0.05em;
+    margin:0; line-height:0.98;
+  }
+  html[lang="bn"] .hero h1{
+    font-family:'Hind Siliguri',sans-serif;
+    letter-spacing:0; font-weight:700; font-size:38px;
+  }
+  .hero p.tag{
+    color:var(--text-dim); font-size:15px; margin:10px 0 0;
+    max-width:34ch;
+  }
+
+  .status-chip{
+    margin-top:16px;
+    display:inline-flex; align-items:center; gap:8px;
+    padding:8px 14px; border-radius:999px;
+    background:var(--glass); border:1px solid var(--glass-border);
+    font-size:13px; font-weight:600;
+  }
+  .status-dot{width:8px; height:8px; border-radius:50%; background:#33b56c;}
+  .status-dot.closed{background:#e0644c;}
+
+  .hero-actions{
+    display:flex; gap:10px; margin-top:22px; width:100%; max-width:420px;
+  }
+  .btn{
+    flex:1; text-align:center; text-decoration:none;
+    padding:14px 12px; border-radius:16px; font-weight:600; font-size:14.5px;
+    border:1px solid var(--glass-border);
+    display:flex; align-items:center; justify-content:center; gap:8px;
+  }
+  .btn svg{width:16px; height:16px; flex-shrink:0;}
+  .btn.primary{
+    background:linear-gradient(135deg, var(--accent), #1e4fc4);
+    color:#fbfdff; border:none;
+  }
+  .btn.ghost{
+    background:var(--glass); color:var(--text);
+    backdrop-filter:blur(10px);
+  }
+
+  /* ---------- Sections ---------- */
+  .section{padding:38px 0 6px;}
+  .section-head{padding:0 20px; margin-bottom:14px;}
+  .section-head h2{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:27px; letter-spacing:0.03em; margin:0 0 4px;
+  }
+  html[lang="bn"] .section-head h2{
+    font-family:'Hind Siliguri',sans-serif; letter-spacing:0; font-weight:700; font-size:23px;
+  }
+  .section-head p{margin:0; color:var(--text-dim); font-size:13.5px;}
+
+  .scroller{
+    display:flex; gap:14px; overflow-x:auto;
+    padding:4px 20px 14px;
+    scroll-snap-type:x proximity;
+    -webkit-overflow-scrolling:touch;
+  }
+  .scroller::-webkit-scrollbar{display:none;}
+
+  .style-card{
+    scroll-snap-align:start;
+    flex:0 0 auto; width:150px;
+    border-radius:var(--radius-md);
+    overflow:hidden;
+    background:var(--glass);
+    border:1px solid var(--glass-border);
+    backdrop-filter:blur(14px) saturate(160%);
+    box-shadow:0 10px 24px var(--shadow);
+    cursor:pointer;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .style-card .thumb{
+    width:100%; height:170px; object-fit:cover; display:block;
+    background:#dfe8f5;
+  }
+  .style-card .cap{
+    padding:10px 11px 12px;
+  }
+  .style-card .cap .num{
+    font-size:11px; color:var(--accent); font-weight:700; letter-spacing:0.04em;
+  }
+  .style-card .cap .name{
+    font-size:13px; font-weight:600; margin-top:2px; line-height:1.25; color:var(--text);
+  }
+
+  /* ---------- Visit us ---------- */
+  .visit-card{
+    margin:8px 20px 0;
+    background:var(--glass);
+    border:1px solid var(--glass-border);
+    border-radius:var(--radius-lg);
+    padding:22px 20px;
+    backdrop-filter:blur(18px) saturate(160%);
+    box-shadow:0 18px 40px var(--shadow);
+  }
+  .visit-row{
+    display:flex; gap:14px; align-items:flex-start;
+    padding:12px 0; border-bottom:1px solid rgba(21,34,56,0.08);
+  }
+  .visit-row:last-child{border-bottom:none;}
+  .visit-icon{
+    width:38px; height:38px; border-radius:50%;
+    background:rgba(47,111,237,0.13);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  .visit-icon svg{width:17px; height:17px; color:var(--accent);}
+  .visit-text .label{font-size:12px; color:var(--text-dim); margin-bottom:3px;}
+  .visit-text .value{font-size:14.5px; font-weight:600; line-height:1.4;}
+  .visit-text a.value{text-decoration:none;}
+
+  footer{
+    text-align:center; padding:34px 20px 44px;
+    color:var(--text-dim); font-size:12.5px;
+  }
+  footer .wordmark{font-size:16px; color:var(--text); display:block; margin-bottom:6px;}
+
+  /* ---------- Lightbox ---------- */
+  .lightbox{
+    position:fixed; inset:0; z-index:100;
+    display:none;
+    align-items:center; justify-content:center;
+    background:rgba(8,14,24,0.72);
+    backdrop-filter:blur(26px) saturate(120%);
+    -webkit-backdrop-filter:blur(26px) saturate(120%);
+    padding:24px 14px;
+  }
+  .lightbox.open{display:flex;}
+  .lightbox-inner{
+    width:100%; max-width:480px;
+    display:flex; flex-direction:column; align-items:center;
+  }
+  .lightbox img{
+    max-width:100%; max-height:62vh;
+    border-radius:var(--radius-md);
+    box-shadow:0 30px 70px rgba(0,0,0,0.5);
+    object-fit:contain;
+    background:#0f172a;
+  }
+  .lightbox-cap{
+    margin-top:18px; text-align:center;
+  }
+  .lightbox-cap .name{font-size:20px; font-weight:700; color:#f5f8ff;}
+  .lightbox-cap .meta{font-size:13px; color:#b9c6dd; margin-top:4px;}
+
+  .lightbox-close{
+    position:absolute; top:18px; right:18px;
+    width:40px; height:40px; border-radius:50%;
+    background:rgba(255,255,255,0.16); border:1px solid rgba(255,255,255,0.3);
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer; color:#fff;
+  }
+  .lightbox-close svg{width:16px; height:16px;}
+
+  .lightbox-nav{
+    display:flex; gap:16px; margin-top:20px;
+  }
+  .nav-arrow{
+    width:46px; height:46px; border-radius:50%;
+    background:rgba(255,255,255,0.14); border:1px solid rgba(255,255,255,0.28);
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer; color:#fff;
+  }
+  .nav-arrow svg{width:18px; height:18px;}
+
+  @media (min-width:640px){
+    .hero h1{font-size:64px;}
+    html[lang="bn"] .hero h1{font-size:46px;}
+    .style-card{width:170px;}
+    .scroller{padding-left:calc(50% - 300px); padding-right:calc(50% - 300px);}
+    .section-head, .visit-card{max-width:600px; margin-left:auto; margin-right:auto;}
+    .section-head{padding-left:0; padding-right:0;}
+  }
+</style>
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="brand wordmark">
+      <span class="i18n" data-en="Manna " data-bn="মান্না ">Manna </span><span class="i18n" data-en="Saloon" data-bn="সেলুন">Saloon</span>
+    </div>
+    <div class="lang-btn" id="langBtn" aria-label="Change language">EN</div>
+  </div>
+
+  <section class="hero">
+    <div class="owner-frame" id="ownerFrame">
+      <img src="owner.jpg" alt="Owner of Manna Saloon" id="ownerImg">
+    </div>
+    <h1 class="wordmark i18n" data-en="Manna Saloon" data-bn="মান্না সেলুন">Manna Saloon</h1>
+    <p class="tag i18n" data-en="Sharp fades, clean lines and honest grooming — Sabang's neighbourhood barbershop." data-bn="নিখুঁত ফেড, পরিষ্কার কাট আর সৎ যত্ন — সাবং-এর পাড়ার সেলুন।">Sharp fades, clean lines and honest grooming — Sabang's neighbourhood barbershop.</p>
+    <div class="status-chip" id="statusChip">
+      <span class="status-dot" id="statusDot"></span>
+      <span id="statusText">…</span>
+    </div>
+    <div class="hero-actions">
+      <a class="btn primary" href="tel:+919339432837">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.34 1.78.66 2.61a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.47-1.27a2 2 0 0 1 2.11-.45c.83.32 1.71.54 2.61.66A2 2 0 0 1 22 16.92z"/></svg>
+        <span class="i18n" data-en="Call Now" data-bn="কল করুন">Call Now</span>
+      </a>
+      <a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=Bural+Bazaar+Sabang+Pashchim+Medinipur+West+Bengal+721144" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span class="i18n" data-en="Directions" data-bn="পথনির্দেশ">Directions</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="section" id="hairstyles">
+    <div class="section-head">
+      <h2 class="i18n" data-en="Hairstyles" data-bn="চুলের স্টাইল">Hairstyles</h2>
+      <p class="i18n" data-en="Tap a look to see it full screen. Ask by number in the chair." data-bn="পুরো স্ক্রিনে দেখতে ছবিতে ট্যাপ করুন। চেয়ারে বসে নম্বর বলে চাইতে পারেন।">Tap a look to see it full screen. Ask by number in the chair.</p>
+    </div>
+    <div class="scroller" id="hairScroller"></div>
+  </section>
+
+  <section class="section" id="beards">
+    <div class="section-head">
+      <h2 class="i18n" data-en="Beard Styles" data-bn="দাড়ির স্টাইল">Beard Styles</h2>
+      <p class="i18n" data-en="From a clean shave to a full boxed beard." data-bn="ক্লিন শেভ থেকে ফুল বক্সড বিয়ার্ড পর্যন্ত।">From a clean shave to a full boxed beard.</p>
+    </div>
+    <div class="scroller" id="beardScroller"></div>
+  </section>
+
+  <section class="section" id="visit">
+    <div class="section-head">
+      <h2 class="i18n" data-en="Visit Us" data-bn="আমাদের দোকানে আসুন">Visit Us</h2>
+      <p class="i18n" data-en="Walk-ins welcome during shop hours." data-bn="দোকান খোলার সময় সরাসরি চলে আসতে পারেন।">Walk-ins welcome during shop hours.</p>
+    </div>
+    <div class="visit-card">
+      <div class="visit-row">
+        <div class="visit-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div class="visit-text">
+          <div class="label i18n" data-en="Address" data-bn="ঠিকানা">Address</div>
+          <a class="value" href="https://www.google.com/maps/search/?api=1&query=Bural+Bazaar+Sabang+Pashchim+Medinipur+West+Bengal+721144" target="_blank" rel="noopener" style="color:inherit;">
+            Bural Bazaar, Sabang, Pashchim Medinipur, West Bengal, India 721144
+          </a>
+        </div>
+      </div>
+      <div class="visit-row">
+        <div class="visit-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.34 1.78.66 2.61a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.47-1.27a2 2 0 0 1 2.11-.45c.83.32 1.71.54 2.61.66A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+        <div class="visit-text">
+          <div class="label i18n" data-en="Phone" data-bn="ফোন">Phone</div>
+          <a class="value" href="tel:+919339432837">+91 93394 32837</a>
+        </div>
+      </div>
+      <div class="visit-row">
+        <div class="visit-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="visit-text">
+          <div class="label i18n" data-en="Hours" data-bn="সময়">Hours</div>
+          <div class="value"><span class="i18n" data-en="Morning:" data-bn="সকাল:">Morning:</span> 8:00 AM – 1:00 PM</div>
+          <div class="value" style="margin-top:4px;"><span class="i18n" data-en="Evening:" data-bn="বিকেল:">Evening:</span> 3:30 PM – 8:00 PM</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span class="wordmark i18n" data-en="Manna Saloon" data-bn="মান্না সেলুন">Manna Saloon</span>
+    Bural Bazaar, Sabang · West Bengal
+  </footer>
+
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-close" id="lightboxClose">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </div>
+    <div class="lightbox-inner">
+      <img id="lightboxImg" src="" alt="">
+      <div class="lightbox-cap">
+        <div class="name" id="lightboxName"></div>
+        <div class="meta" id="lightboxMeta"></div>
+      </div>
+      <div class="lightbox-nav">
+        <div class="nav-arrow" id="lightboxPrev">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </div>
+        <div class="nav-arrow" id="lightboxNext">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+  // ---------- Language ----------
+  var currentLang = 'bn'; // default per request
+
+  function applyLang(){
+    document.documentElement.setAttribute('lang', currentLang);
+    document.querySelectorAll('.i18n').forEach(function(el){
+      el.textContent = el.dataset[currentLang];
+    });
+    document.getElementById('langBtn').textContent = currentLang === 'bn' ? 'EN' : 'বাং';
+    document.querySelectorAll('.style-card .num').forEach(function(el){
+      el.textContent = numLabel(el.dataset.pad);
+    });
+    updateStatus();
+    if(lightbox.classList.contains('open')) renderLightbox();
+  }
+
+  document.getElementById('langBtn').addEventListener('click', function(){
+    currentLang = currentLang === 'bn' ? 'en' : 'bn';
+    applyLang();
+  });
+
+  function numLabel(pad){
+    return currentLang === 'bn' ? ('নং ' + pad) : ('No. ' + pad);
+  }
+
+  // ---------- Data (style names always stay in English) ----------
+  var hairstyles = [
+    { src:"hair1.jpg", num:1, name:"Curly Fringe Fade" },
+    { src:"hair2.jpg", num:2, name:"Spiky Textured Quiff" },
+    { src:"hair3.jpg", num:3, name:"Curly Crop Fade" },
+    { src:"hair4.jpg", num:4, name:"Messy Textured Crop" },
+    { src:"hair6.jpg", num:5, name:"Slick Side-Part Pompadour" },
+    { src:"blade1.jpg", num:6, name:"Bald Fade" }
+  ];
+
+  var beards = [
+    { src:"hair1.png", num:1, name:"Clean Shave" },
+    { src:"hair2.png", num:2, name:"Light Stubble" },
+    { src:"hair3.png", num:3, name:"Short Beard" },
+    { src:"hair4.png", num:4, name:"Medium Beard" },
+    { src:"hair5.png", num:5, name:"Full Beard" },
+    { src:"hair6.png", num:6, name:"Long Beard" },
+    { src:"hair7.png", num:7, name:"Ducktail Beard" },
+    { src:"hair8.png", num:8, name:"Boxed Beard" },
+    { src:"hair9.png", num:9, name:"Goatee" },
+    { src:"hair10.png", num:10, name:"Mustache with Beard" },
+    { src:"hair11.png", num:11, name:"Mustache" },
+    { src:"hair12.png", num:12, name:"Extended Sideburns" },
+    { src:"hair13.png", num:13, name:"Chin Strap" }
+  ];
+
+  function pad(n){ return n < 10 ? "0" + n : "" + n; }
+
+  function buildScroller(containerId, items){
+    var el = document.getElementById(containerId);
+    items.forEach(function(item, idx){
+      var p = pad(item.num);
+      var card = document.createElement("div");
+      card.className = "style-card";
+      card.innerHTML =
+        '<img class="thumb" src="' + item.src + '" alt="' + item.name + '" loading="lazy">' +
+        '<div class="cap"><div class="num" data-pad="' + p + '">' + numLabel(p) + '</div><div class="name">' + item.name + '</div></div>';
+      card.addEventListener("click", function(){ openLightbox(items, idx); });
+      el.appendChild(card);
+    });
+  }
+
+  buildScroller("hairScroller", hairstyles);
+  buildScroller("beardScroller", beards);
+
+  // ---------- Lightbox ----------
+  var lightbox = document.getElementById("lightbox");
+  var lbImg = document.getElementById("lightboxImg");
+  var lbName = document.getElementById("lightboxName");
+  var lbMeta = document.getElementById("lightboxMeta");
+  var currentSet = [];
+  var currentIndex = 0;
+
+  function openLightbox(set, idx){
+    currentSet = set;
+    currentIndex = idx;
+    renderLightbox();
+    lightbox.classList.add("open");
+    document.body.style.overflow = "hidden";
+  }
+
+  function renderLightbox(){
+    var item = currentSet[currentIndex];
+    lbImg.src = item.src;
+    lbImg.alt = item.name;
+    lbName.textContent = item.name; // style names always stay in English
+    var p = pad(item.num);
+    if(currentLang === 'bn'){
+      lbMeta.textContent = numLabel(p) + " · " + (currentIndex + 1) + "/" + currentSet.length;
+    } else {
+      lbMeta.textContent = numLabel(p) + " · " + (currentIndex + 1) + " of " + currentSet.length;
+    }
+  }
+
+  function closeLightbox(){
+    lightbox.classList.remove("open");
+    document.body.style.overflow = "";
+  }
+
+  document.getElementById("lightboxClose").addEventListener("click", closeLightbox);
+  lightbox.addEventListener("click", function(e){ if(e.target === lightbox){ closeLightbox(); } });
+
+  document.getElementById("lightboxPrev").addEventListener("click", function(){
+    currentIndex = (currentIndex - 1 + currentSet.length) % currentSet.length;
+    renderLightbox();
+  });
+  document.getElementById("lightboxNext").addEventListener("click", function(){
+    currentIndex = (currentIndex + 1) % currentSet.length;
+    renderLightbox();
+  });
+
+  // swipe support
+  var touchStartX = 0;
+  lightbox.addEventListener("touchstart", function(e){ touchStartX = e.changedTouches[0].screenX; });
+  lightbox.addEventListener("touchend", function(e){
+    var dx = e.changedTouches[0].screenX - touchStartX;
+    if(Math.abs(dx) > 40){
+      if(dx < 0){ currentIndex = (currentIndex + 1) % currentSet.length; }
+      else{ currentIndex = (currentIndex - 1 + currentSet.length) % currentSet.length; }
+      renderLightbox();
+    }
+  });
+
+  document.addEventListener("keydown", function(e){
+    if(!lightbox.classList.contains("open")) return;
+    if(e.key === "Escape") closeLightbox();
+    if(e.key === "ArrowLeft") document.getElementById("lightboxPrev").click();
+    if(e.key === "ArrowRight") document.getElementById("lightboxNext").click();
+  });
+
+  // ---------- Owner photo fallback ----------
+  document.getElementById("ownerImg").addEventListener("error", function(){
+    var frame = document.getElementById("ownerFrame");
+    frame.innerHTML =
+      '<div style="width:100%;height:100%;border-radius:50%;display:flex;align-items:center;justify-content:center;' +
+      'background:linear-gradient(135deg,#dbe6f5,#c3d7f0);border:3px solid rgba(255,255,255,0.9);">' +
+      '<svg viewBox="0 0 24 24" fill="none" stroke="#2f6fed" stroke-width="1.6" style="width:44px;height:44px;">' +
+      '<circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/>' +
+      '<line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/>' +
+      '</svg></div>';
+  });
+
+  // ---------- Open / closed status ----------
+  function updateStatus(){
+    var now = new Date();
+    var mins = now.getHours() * 60 + now.getMinutes();
+    var morningStart = 8 * 60;
+    var morningEnd = 13 * 60;
+    var eveningStart = 15 * 60 + 30;
+    var eveningEnd = 20 * 60;
+    var open = (mins >= morningStart && mins < morningEnd) || (mins >= eveningStart && mins < eveningEnd);
+    var dot = document.getElementById("statusDot");
+    var text = document.getElementById("statusText");
+    if(open){
+      dot.classList.remove("closed");
+      text.textContent = currentLang === 'bn' ? "এখন খোলা" : "Open now";
+    } else {
+      dot.classList.add("closed");
+      text.textContent = currentLang === 'bn' ? "এখন বন্ধ" : "Closed now";
+    }
+  }
+
+  applyLang();
+  setInterval(updateStatus, 60000);
+</script>
+</body>
+</html>
